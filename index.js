@@ -23,3 +23,22 @@ function calculate() {
         display.value = "error"
     }
 }
+
+//function to use keyboard
+function handleKeyboardInput(event) {
+    const key = event.key;
+    if ((key >= '0' && key <= '9') || key === '.') {
+        appendToDisplay(key);
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+        appendToDisplay(key);
+    } else if (key === 'Enter') {
+        calculate();
+    } else if (key === 'Backspace') {
+        display.value = display.value.slice(0, -1);
+    } else if (key === 'Escape') {
+        clearDisplay();
+    }
+}
+
+// Add event listener for keydown
+document.addEventListener('keydown', handleKeyboardInput);
